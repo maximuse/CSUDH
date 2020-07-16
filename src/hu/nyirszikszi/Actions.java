@@ -37,35 +37,7 @@ class Actions {
         return list.size();
     }
 
-    //static  ArrayList<ArrayList<String>> partsOfDomain(ArrayList<Csudh> list) {
     static  ArrayList<ArrayList<String>> partsOfDomain(Csudh list) {
-        /*ArrayList<String[]> result = new ArrayList<>();
-        String[] slice;
-
-        for (Csudh l : list) {
-            slice = l.getDomainName().split("\\.");
-            //System.out.println(Arrays.toString(slice));
-            Collections.reverse(Arrays.asList(slice));
-            //System.out.println(Arrays.toString(slice));
-
-            result.add(slice);
-        }*/
-
-        /*ArrayList<ArrayList<String>> result = new ArrayList<>();
-        ArrayList<String> data;
-        String[] slice;
-
-        for (Csudh l : list) {
-            slice = l.getDomainName().split("\\.");
-            Collections.reverse(Arrays.asList(slice));
-
-            data = new ArrayList<>(Arrays.asList(slice));
-
-            result.add(data);
-        }
-
-        return result;*/
-
         ArrayList<ArrayList<String>> result = new ArrayList<>();
         ArrayList<String> data;
         String[] slice;
@@ -80,7 +52,7 @@ class Actions {
         return result;
     }
 
-    static String Domain(ArrayList<Csudh> list, int index, int level) {
+    private static String Domain(ArrayList<Csudh> list, int index, int level) {
         Csudh data = list.get(index);
         int i = level - 1;
 
@@ -97,6 +69,43 @@ class Actions {
 
         for (int i = 1; i <= 5; i++) {
             System.out.println("\t" + (i + 1) + ". szint: " + Domain(list, index, i));
+        }
+    }
+
+    static void task6(ArrayList<Csudh> list, String fileName) {
+        try {
+            RandomAccessFile raf = new RandomAccessFile(fileName, "rw");
+
+            raf.writeBytes(new String("<table>\r\n" +
+                    "<tr>\r\n" +
+                    "<th style='text-align:left'>Ssz</th>\r\n" +
+                    "<th style='text-align:left'>Hoszt domain neve</th>\r\n" +
+                    "<th style='text-align:left'>Hoszt IP címe</th>\r\n" +
+                    "<th style='text-align:left'>1. szint</th>\r\n" +
+                    "<th style='text-align:left'>2. szint</th>\r\n" +
+                    "<th style='text-align:left'>3. szint</th>\r\n" +
+                    "<th style='text-align:left'>4. szint</th>\r\n" +
+                    "<th style='text-align:left'>5. szint</th>\r\n" +
+                    "</tr>\r\n"));
+
+            for (int i = 0; i < list.size(); i++) {
+                raf.writeBytes(new String("<tr>\r\n" +
+                        "<td>" + (i + 1) + ".</td>\r\n" +
+                        "<td>" + list.get(i).getDomainName() + "</td>\r\n" +
+                        "<td>" + list.get(i).getIpAddress() + "</td>\r\n" +
+                        "<td>" + Domain(list, i, 1) + "</td>\r\n" +
+                        "<td>" + Domain(list, i, 2) + "</td>\r\n" +
+                        "<td>" + Domain(list, i, 3) + "</td>\r\n" +
+                        "<td>" + Domain(list, i, 4) + "</td>\r\n" +
+                        "<td>" + Domain(list, i, 5) + "</td>\r\n" +
+                        "</tr>\r\n"));
+            }
+
+            raf.writeBytes(new String("</table>"));
+            raf.close();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }

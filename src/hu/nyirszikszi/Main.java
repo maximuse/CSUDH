@@ -8,5 +8,6 @@ public class Main {
 
         System.out.println("3. feladat: Domain-ek száma: " + Actions.task3(list));
         Actions.task5(list, 0);
+        Actions.task6(list, "table.html");
     }
 }
