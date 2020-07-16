@@ -76,32 +76,32 @@ class Actions {
         try {
             RandomAccessFile raf = new RandomAccessFile(fileName, "rw");
 
-            raf.writeBytes(new String("<table>\r\n" +
-                    "<tr>\r\n" +
-                    "<th style='text-align:left'>Ssz</th>\r\n" +
-                    "<th style='text-align:left'>Hoszt domain neve</th>\r\n" +
-                    "<th style='text-align:left'>Hoszt IP címe</th>\r\n" +
-                    "<th style='text-align:left'>1. szint</th>\r\n" +
-                    "<th style='text-align:left'>2. szint</th>\r\n" +
-                    "<th style='text-align:left'>3. szint</th>\r\n" +
-                    "<th style='text-align:left'>4. szint</th>\r\n" +
-                    "<th style='text-align:left'>5. szint</th>\r\n" +
-                    "</tr>\r\n"));
+            raf.writeBytes("<table>\r\n" +
+                    "\t<tr>\r\n" +
+                    "\t\t<th style='text-align:left'>Ssz</th>\r\n" +
+                    "\t\t<th style='text-align:left'>Hoszt domain neve</th>\r\n" +
+                    "\t\t<th style='text-align:left'>Hoszt IP címe</th>\r\n" +
+                    "\t\t<th style='text-align:left'>1. szint</th>\r\n" +
+                    "\t\t<th style='text-align:left'>2. szint</th>\r\n" +
+                    "\t\t<th style='text-align:left'>3. szint</th>\r\n" +
+                    "\t\t<th style='text-align:left'>4. szint</th>\r\n" +
+                    "\t\t<th style='text-align:left'>5. szint</th>\r\n" +
+                    "\t</tr>\r\n");
 
             for (int i = 0; i < list.size(); i++) {
-                raf.writeBytes(new String("<tr>\r\n" +
-                        "<td>" + (i + 1) + ".</td>\r\n" +
-                        "<td>" + list.get(i).getDomainName() + "</td>\r\n" +
-                        "<td>" + list.get(i).getIpAddress() + "</td>\r\n" +
-                        "<td>" + Domain(list, i, 1) + "</td>\r\n" +
-                        "<td>" + Domain(list, i, 2) + "</td>\r\n" +
-                        "<td>" + Domain(list, i, 3) + "</td>\r\n" +
-                        "<td>" + Domain(list, i, 4) + "</td>\r\n" +
-                        "<td>" + Domain(list, i, 5) + "</td>\r\n" +
-                        "</tr>\r\n"));
+                raf.writeBytes("\t<tr>\r\n" +
+                        "\t\t<td>" + (i + 1) + ".</td>\r\n" +
+                        "\t\t<td>" + list.get(i).getDomainName() + "</td>\r\n" +
+                        "\t\t<td>" + list.get(i).getIpAddress() + "</td>\r\n" +
+                        "\t\t<td>" + Domain(list, i, 1) + "</td>\r\n" +
+                        "\t\t<td>" + Domain(list, i, 2) + "</td>\r\n" +
+                        "\t\t<td>" + Domain(list, i, 3) + "</td>\r\n" +
+                        "\t\t<td>" + Domain(list, i, 4) + "</td>\r\n" +
+                        "\t\t<td>" + Domain(list, i, 5) + "</td>\r\n" +
+                        "\t</tr>\r\n");
             }
 
-            raf.writeBytes(new String("</table>"));
+            raf.writeBytes("</table>");
             raf.close();
         }
         catch (Exception e) {
