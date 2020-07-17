@@ -7,6 +7,16 @@ import java.util.Arrays;
 import java.util.Collections;
 
 class Actions {
+    private static ArrayList<Csudh> list;
+
+    private static ArrayList<Csudh> getList() {
+        return list;
+    }
+
+    private static void setList(ArrayList<Csudh> list) {
+        Actions.list = list;
+    }
+
     static ArrayList<Csudh> fileToList(String fileName) {
         ArrayList<Csudh> list = new ArrayList<>();
 
@@ -25,6 +35,8 @@ class Actions {
             }
 
             raf.close();
+
+            setList(list);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -33,8 +45,8 @@ class Actions {
         return list;
     }
 
-    static int task3(ArrayList<Csudh> list) {
-        return list.size();
+    static int task3() {
+        return Actions.getList().size();
     }
 
     private static ArrayList<ArrayList<String>> partsOfDomain(Csudh list) {
@@ -52,8 +64,8 @@ class Actions {
         return result;
     }
 
-    private static String Domain(ArrayList<Csudh> list, int index, int level) {
-        Csudh data = list.get(index);
+    private static String Domain(int index, int level) {
+        Csudh data = Actions.getList().get(index);
         int i = level - 1;
 
         try {
@@ -64,11 +76,11 @@ class Actions {
         }
     }
 
-    static void task5(ArrayList<Csudh> list, int index) {
+    static void task5(int index) {
         System.out.println("5. feladat: Az " + (index + 1) + ". domain felépítése:");
 
         for (int i = 1; i <= 5; i++) {
-            System.out.println("\t" + (i + 1) + ". szint: " + Domain(list, index, i));
+            System.out.println("\t" + (i + 1) + ". szint: " + Domain(index, i));
         }
     }
 
@@ -93,11 +105,11 @@ class Actions {
                         "\t\t<td>" + (i + 1) + ".</td>\r\n" +
                         "\t\t<td>" + list.get(i).getDomainName() + "</td>\r\n" +
                         "\t\t<td>" + list.get(i).getIpAddress() + "</td>\r\n" +
-                        "\t\t<td>" + Domain(list, i, 1) + "</td>\r\n" +
-                        "\t\t<td>" + Domain(list, i, 2) + "</td>\r\n" +
-                        "\t\t<td>" + Domain(list, i, 3) + "</td>\r\n" +
-                        "\t\t<td>" + Domain(list, i, 4) + "</td>\r\n" +
-                        "\t\t<td>" + Domain(list, i, 5) + "</td>\r\n" +
+                        "\t\t<td>" + Domain(i, 1) + "</td>\r\n" +
+                        "\t\t<td>" + Domain(i, 2) + "</td>\r\n" +
+                        "\t\t<td>" + Domain(i, 3) + "</td>\r\n" +
+                        "\t\t<td>" + Domain(i, 4) + "</td>\r\n" +
+                        "\t\t<td>" + Domain(i, 5) + "</td>\r\n" +
                         "\t</tr>\r\n");
             }
 
