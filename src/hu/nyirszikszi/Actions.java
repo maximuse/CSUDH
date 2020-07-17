@@ -17,7 +17,7 @@ class Actions {
         Actions.list = list;
     }
 
-    static ArrayList<Csudh> fileToList(String fileName) {
+    static void fileToList(String fileName) {
         ArrayList<Csudh> list = new ArrayList<>();
 
         try {
@@ -41,8 +41,6 @@ class Actions {
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-        return list;
     }
 
     static int task3() {
@@ -84,7 +82,7 @@ class Actions {
         }
     }
 
-    static void task6(ArrayList<Csudh> list, String fileName) {
+    static void task6(String fileName) {
         try {
             RandomAccessFile raf = new RandomAccessFile(fileName, "rw");
 
@@ -100,11 +98,11 @@ class Actions {
                     "\t\t<th style='text-align:left'>5. szint</th>\r\n" +
                     "\t</tr>\r\n");
 
-            for (int i = 0; i < list.size(); i++) {
+            for (int i = 0; i < Actions.getList().size(); i++) {
                 raf.writeBytes("\t<tr>\r\n" +
                         "\t\t<td>" + (i + 1) + ".</td>\r\n" +
-                        "\t\t<td>" + list.get(i).getDomainName() + "</td>\r\n" +
-                        "\t\t<td>" + list.get(i).getIpAddress() + "</td>\r\n" +
+                        "\t\t<td>" + Actions.getList().get(i).getDomainName() + "</td>\r\n" +
+                        "\t\t<td>" + Actions.getList().get(i).getIpAddress() + "</td>\r\n" +
                         "\t\t<td>" + Domain(i, 1) + "</td>\r\n" +
                         "\t\t<td>" + Domain(i, 2) + "</td>\r\n" +
                         "\t\t<td>" + Domain(i, 3) + "</td>\r\n" +
