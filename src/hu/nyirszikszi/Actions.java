@@ -37,7 +37,7 @@ class Actions {
         return list.size();
     }
 
-    private static  ArrayList<ArrayList<String>> partsOfDomain(Csudh list) {
+    private static ArrayList<ArrayList<String>> partsOfDomain(Csudh list) {
         ArrayList<ArrayList<String>> result = new ArrayList<>();
         ArrayList<String> data;
         String[] slice;
