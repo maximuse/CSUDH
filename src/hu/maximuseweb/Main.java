@@ -1,4 +1,4 @@
-package hu.nyirszikszi;
+package hu.maximuseweb;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package hu.nyirszikszi;
+package hu.maximuseweb;
 
 class Csudh {
     private String domainName;

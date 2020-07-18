@@ -1,4 +1,4 @@
-package hu.nyirszikszi;
+package hu.maximuseweb;
 
 import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
